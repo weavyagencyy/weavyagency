@@ -1,0 +1,1137 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weavy Agency | Tu tsunami digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F172A;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0F172A, #1A2151);
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.7;
+            z-index: 0;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #00F0FF;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: #00D1D1;
+        }
+        
+        .service-card {
+            transition: all 0.4s ease;
+            background: rgba(26, 33, 81, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 209, 209, 0.2);
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 209, 209, 0.3);
+            border: 1px solid rgba(0, 209, 209, 0.5);
+        }
+        
+        .testimonial-card {
+            transition: all 0.4s ease;
+            background: rgba(26, 33, 81, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 142, 110, 0.2);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 142, 110, 0.3);
+            border: 1px solid rgba(255, 142, 110, 0.5);
+        }
+        
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #00D1D1, #008080);
+        }
+        
+        .cta-button:hover {
+            box-shadow: 0 0 20px rgba(0, 209, 209, 0.7);
+            transform: translateY(-3px);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #00F0FF, #8A2BE2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Marquee mejorado con animaciones avanzadas */
+        .marquee-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(90deg, #00F0FF, #8A2BE2, #FF1493, #8A2BE2, #00F0FF);
+            background-size: 200% 100%;
+            animation: gradientBg 15s ease infinite;
+        }
+        
+        @keyframes gradientBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .marquee-container {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 12px 0;
+        }
+        
+        .marquee-track {
+            display: flex;
+            animation: marquee 25s linear infinite;
+            will-change: transform;
+        }
+        
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        .marquee-item {
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .marquee-item i {
+            margin-right: 10px;
+            font-size: 1.2em;
+            animation: pulse 2s infinite;
+        }
+        
+        .marquee-divider {
+            margin: 0 10px;
+            opacity: 0.7;
+            animation: blink 3s infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.3; }
+        }
+        
+        .marquee-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            pointer-events: none;
+            background: linear-gradient(90deg, 
+                rgba(0, 240, 255, 0.3) 0%, 
+                rgba(0, 0, 0, 0) 20%, 
+                rgba(0, 0, 0, 0) 80%, 
+                rgba(138, 43, 226, 0.3) 100%);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 209, 209, 0.3);
+            background: rgba(26, 33, 81, 0.2);
+        }
+        
+        .input-field:focus {
+            border-color: #00F0FF;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            outline: none;
+        }
+        
+        .team-member {
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #00F0FF;
+        }
+        
+        .service-tabs {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .service-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .service-tab {
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .service-tab.active {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(138, 43, 226, 0.2));
+            border-color: #00F0FF;
+            transform: scale(1.05);
+        }
+        
+        .counter-value {
+            display: inline-block;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .counter-container {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .counter-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(0, 240, 255, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+            }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .hover-bright {
+            transition: filter 0.3s ease;
+        }
+        
+        .hover-bright:hover {
+            filter: brightness(1.2);
+        }
+        
+        .hover-shadow {
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+        }
+        
+        /* Asegurando que las secciones sean visibles */
+        section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Mejorando la visibilidad de las tarjetas */
+        .service-card, .testimonial-card, .team-member {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            background-color: rgba(26, 33, 81, 0.5) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blobs decorativos simplificados -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="blob" style="width: 400px; height: 400px; top: 10%; left: 5%; background: radial-gradient(circle at center, rgba(0, 240, 255, 0.4), transparent 70%);"></div>
+        <div class="blob" style="width: 500px; height: 500px; top: 60%; left: 70%; background: radial-gradient(circle at center, rgba(138, 43, 226, 0.3), transparent 70%);"></div>
+        <div class="blob" style="width: 450px; height: 450px; top: 40%; left: 30%; background: radial-gradient(circle at center, rgba(0, 209, 209, 0.2), transparent 70%);"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-[#0F172A] bg-opacity-70 backdrop-blur-lg z-50 py-4 border-b border-[#00D1D1] border-opacity-20">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-white font-black text-3xl hover-scale">
+                    <span class="text-[#00F0FF]">W</span>eavy <span class="text-[#8A2BE2]">A</span>gency
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#inicio" class="nav-link text-white font-bold hover-bright">Inicio</a>
+                <a href="#servicios" class="nav-link text-white font-bold hover-bright">Servicios</a>
+                <a href="#nosotros" class="nav-link text-white font-bold hover-bright">Nosotros</a>
+                <a href="#testimonios" class="nav-link text-white font-bold hover-bright">Testimonios</a>
+                <a href="#contacto" class="nav-link text-white font-bold hover-bright">Contacto</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0F172A] bg-opacity-95 backdrop-blur-lg w-full absolute top-full left-0 py-4 px-4 border-b border-[#00D1D1] border-opacity-20">
+            <div class="flex flex-col space-y-4">
+                <a href="#inicio" class="text-white font-bold py-2 px-4 hover:bg-[#00F0FF] hover:bg-opacity-20 rounded transition-all hover-bright">Inicio</a>
+                <a href="#servicios" class="text-white font-bold py-2 px-4 hover:bg-[#00F0FF] hover:bg-opacity-20 rounded transition-all hover-bright">Servicios</a>
+                <a href="#nosotros" class="text-white font-bold py-2 px-4 hover:bg-[#00F0FF] hover:bg-opacity-20 rounded transition-all hover-bright">Nosotros</a>
+                <a href="#testimonios" class="text-white font-bold py-2 px-4 hover:bg-[#00F0FF] hover:bg-opacity-20 rounded transition-all hover-bright">Testimonios</a>
+                <a href="#contacto" class="text-white font-bold py-2 px-4 hover:bg-[#00F0FF] hover:bg-opacity-20 rounded transition-all hover-bright">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Marquee animado mejorado con efectos avanzados -->
+    <div class="marquee-wrapper mt-16">
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-item">
+                    <i class="fas fa-bolt text-white"></i>
+                    "Ads que venden, no que decoran"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-wave-square text-white"></i>
+                    "Marketing que sacude al mundo"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-water text-white"></i>
+                    "Weavy Agency: tu tsunami digital"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-chart-line text-white"></i>
+                    "Resultados, no promesas"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-rocket text-white"></i>
+                    "Impulsa tu negocio al siguiente nivel"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <!-- Duplicados para crear el efecto continuo -->
+                <div class="marquee-item">
+                    <i class="fas fa-bolt text-white"></i>
+                    "Ads que venden, no que decoran"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-wave-square text-white"></i>
+                    "Marketing que sacude al mundo"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-water text-white"></i>
+                    "Weavy Agency: tu tsunami digital"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-chart-line text-white"></i>
+                    "Resultados, no promesas"
+                    <span class="marquee-divider">|</span>
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-rocket text-white"></i>
+                    "Impulsa tu negocio al siguiente nivel"
+                    <span class="marquee-divider">|</span>
+                </div>
+            </div>
+        </div>
+        <div class="marquee-glow"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="gradient-bg min-h-screen flex items-center justify-center relative pt-20 pb-32">
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                        <span class="gradient-text">Ads que venden,</span> <br>no que decoran.
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white mb-10 opacity-90">
+                        Se acabó el marketing muerto. Adiós a las fórmulas falsas. <span class="text-[#00F0FF]">Aquí levantamos marcas</span> con voz de trueno, calle de fuego y estrategia que aplasta.
+                    </p>
+                    <a href="#contacto" class="cta-button inline-block text-white text-xl md:text-2xl font-black py-4 px-10 rounded-full hover:bg-opacity-90 transition-all">
+                        CATCH THE WAVE
+                        <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                    
+                    <!-- Contador de estadísticas -->
+                    <div class="mt-12 grid grid-cols-3 gap-4">
+                        <div class="counter-container text-center p-4 service-card rounded-xl">
+                            <div class="text-3xl font-bold text-[#00F0FF] counter-value" id="counter1">150+</div>
+                            <p class="text-white text-sm mt-2">Clientes satisfechos</p>
+                        </div>
+                        <div class="counter-container text-center p-4 service-card rounded-xl">
+                            <div class="text-3xl font-bold text-[#8A2BE2] counter-value" id="counter2">320%</div>
+                            <p class="text-white text-sm mt-2">ROI promedio</p>
+                        </div>
+                        <div class="counter-container text-center p-4 service-card rounded-xl">
+                            <div class="text-3xl font-bold text-[#FF1493] counter-value" id="counter3">24/7</div>
+                            <p class="text-white text-sm mt-2">Soporte</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative floating">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] opacity-30 rounded-full blur-3xl"></div>
+                        <svg class="w-full h-auto relative z-10" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#00F0FF" />
+                                    <stop offset="50%" stop-color="#8A2BE2" />
+                                    <stop offset="100%" stop-color="#FF1493" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M416.5,207.5c-30-45-95-61-138-33s-36,89-75,113s-93,8-122,41s-24,91,15,117s106,29,158,13s79-54,121-62s85,27,105-8S446.5,252.5,416.5,207.5Z" fill="#1A2151" opacity="0.3"></path>
+                            <path d="M389.5,207.5c-30-45-95-61-138-33s-36,89-75,113s-93,8-122,41s-24,91,15,117s106,29,158,13s79-54,121-62s85,27,105-8S419.5,252.5,389.5,207.5Z" fill="#8A2BE2" opacity="0.3"></path>
+                            <path d="M397.5,217.5c-30-45-95-61-138-33s-36,89-75,113s-93,8-122,41s-24,91,15,117s106,29,158,13s79-54,121-62s85,27,105-8S427.5,262.5,397.5,217.5Z" fill="#00F0FF" opacity="0.3"></path>
+                            <text x="250" y="250" font-size="48" font-weight="bold" text-anchor="middle" fill="white">TSUNAMI DIGITAL</text>
+                            <g transform="translate(250, 320)">
+                                <path d="M-100,0 Q0,-80 100,0 T300,0 T500,0" fill="none" stroke="url(#waveGradient)" stroke-width="8"></path>
+                                <path d="M-100,20 Q0,-60 100,20 T300,20 T500,20" fill="none" stroke="#00F0FF" stroke-width="8" opacity="0.5"></path>
+                                <path d="M-100,40 Q0,-40 100,40 T300,40 T500,40" fill="none" stroke="#FF1493" stroke-width="8" opacity="0.3"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Nuestros <span class="gradient-text">Servicios</span></h2>
+                <p class="text-xl text-white opacity-80 max-w-3xl mx-auto">Soluciones digitales que transforman tu negocio en una fuerza imparable en el mercado.</p>
+            </div>
+            
+            <!-- Tabs de servicios -->
+            <div class="service-tabs flex justify-center mb-12 overflow-x-auto pb-2">
+                <button class="service-tab active px-6 py-3 mx-2 rounded-full border border-[#00F0FF] text-white font-bold text-sm md:text-base hover-shadow" data-tab="all">Todos</button>
+                <button class="service-tab px-6 py-3 mx-2 rounded-full border border-[#00F0FF] border-opacity-30 text-white font-bold text-sm md:text-base hover-shadow" data-tab="ads">Publicidad</button>
+                <button class="service-tab px-6 py-3 mx-2 rounded-full border border-[#00F0FF] border-opacity-30 text-white font-bold text-sm md:text-base hover-shadow" data-tab="web">Diseño Web</button>
+                <button class="service-tab px-6 py-3 mx-2 rounded-full border border-[#00F0FF] border-opacity-30 text-white font-bold text-sm md:text-base hover-shadow" data-tab="content">Contenido</button>
+                <button class="service-tab px-6 py-3 mx-2 rounded-full border border-[#00F0FF] border-opacity-30 text-white font-bold text-sm md:text-base hover-shadow" data-tab="strategy">Estrategia</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="service-card rounded-xl p-8 relative" data-category="ads">
+                    <div class="w-16 h-16 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-2xl text-[#00F0FF]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Facebook & Instagram Ads</h3>
+                    <p class="text-white opacity-80 mb-6">Campañas que convierten visitantes en clientes fieles con estrategias probadas y optimización constante.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Segmentación precisa
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Creatividades que convierten
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Optimización de presupuesto
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#00F0FF] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card rounded-xl p-8 relative" data-category="ads">
+                    <div class="w-16 h-16 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-2xl text-[#8A2BE2]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Google Ads</h3>
+                    <p class="text-white opacity-80 mb-6">Domina los resultados de búsqueda y captura clientes cuando están buscando exactamente lo que ofreces.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Palabras clave estratégicas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Anuncios de alto rendimiento
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Seguimiento de conversiones
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#8A2BE2] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card rounded-xl p-8 relative" data-category="ads">
+                    <div class="w-16 h-16 bg-[#FF8E6E] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-[#FF8E6E]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">TikTok Ads</h3>
+                    <p class="text-white opacity-80 mb-6">Conquista la plataforma de más rápido crecimiento con contenido viral que resuena con tu audiencia.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Contenido nativo y auténtico
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Tendencias actualizadas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Engagement masivo
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#FF8E6E] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 4: Diseño Web -->
+                <div class="service-card rounded-xl p-8 relative" data-category="web">
+                    <div class="w-16 h-16 bg-[#00D1D1] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-[#00D1D1]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Diseño Web</h3>
+                    <p class="text-white opacity-80 mb-6">Sitios web que no solo impresionan visualmente, sino que convierten visitantes en clientes con experiencias de usuario optimizadas.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00D1D1] mr-2"></i>
+                            Diseño responsivo
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00D1D1] mr-2"></i>
+                            Optimización para conversiones
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00D1D1] mr-2"></i>
+                            Velocidad de carga ultrarrápida
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#00D1D1] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 5: E-commerce -->
+                <div class="service-card rounded-xl p-8 relative" data-category="web">
+                    <div class="w-16 h-16 bg-[#FF1493] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shopping-cart text-2xl text-[#FF1493]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Desarrollo E-commerce</h3>
+                    <p class="text-white opacity-80 mb-6">Tiendas online potentes que maximizan ventas con experiencias de compra fluidas y sistemas de pago seguros.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Plataformas personalizadas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Optimización de embudos de venta
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Integración con sistemas de pago
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#FF1493] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 6: Creación de Contenido -->
+                <div class="service-card rounded-xl p-8 relative" data-category="content">
+                    <div class="w-16 h-16 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-photo-video text-2xl text-[#8A2BE2]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Creación de Contenido</h3>
+                    <p class="text-white opacity-80 mb-6">Contenido visual y escrito que captura la esencia de tu marca y resuena con tu audiencia ideal.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Fotografía y video profesional
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Copywriting persuasivo
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#8A2BE2] mr-2"></i>
+                            Contenido para redes sociales
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#8A2BE2] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 7: Email Marketing -->
+                <div class="service-card rounded-xl p-8 relative" data-category="strategy">
+                    <div class="w-16 h-16 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-envelope-open-text text-2xl text-[#00F0FF]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Email Marketing</h3>
+                    <p class="text-white opacity-80 mb-6">Estrategias de email que nutren leads, convierten clientes y maximizan el valor de tu base de datos.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Secuencias automatizadas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Segmentación avanzada
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#00F0FF] mr-2"></i>
+                            Optimización de tasas de apertura
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#00F0FF] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 8: SEO -->
+                <div class="service-card rounded-xl p-8 relative" data-category="strategy">
+                    <div class="w-16 h-16 bg-[#FF8E6E] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-search-plus text-2xl text-[#FF8E6E]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">SEO</h3>
+                    <p class="text-white opacity-80 mb-6">Posicionamiento orgánico que atrae tráfico cualificado a tu web y genera leads de forma sostenible.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Optimización on-page
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Estrategia de contenidos SEO
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF8E6E] mr-2"></i>
+                            Link building de calidad
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#FF8E6E] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Servicio 9: Consultoría Estratégica -->
+                <div class="service-card rounded-xl p-8 relative" data-category="strategy">
+                    <div class="w-16 h-16 bg-[#FF1493] bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-[#FF1493]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Consultoría Estratégica</h3>
+                    <p class="text-white opacity-80 mb-6">Asesoramiento experto para definir la estrategia digital que llevará tu negocio al siguiente nivel.</p>
+                    <ul class="text-white opacity-80 mb-6 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Análisis de competencia
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Definición de buyer persona
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-[#FF1493] mr-2"></i>
+                            Plan de acción personalizado
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="inline-block text-[#FF1493] font-bold hover-bright">Saber más <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- CTA Servicios -->
+            <div class="text-center mt-16">
+                <a href="#contacto" class="cta-button inline-block text-white text-xl font-bold py-4 px-10 rounded-full hover:bg-opacity-90 transition-all">
+                    Solicita una propuesta personalizada
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros - Sección mejorada y destacada (solo CEO y COO) -->
+    <section id="nosotros" class="py-20 relative overflow-hidden bg-[#0D1424]">
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Quiénes <span class="gradient-text">Somos</span></h2>
+                <p class="text-xl text-white opacity-80 max-w-3xl mx-auto">Un equipo de especialistas digitales obsesionados con resultados y crecimiento exponencial.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="relative mb-12">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] opacity-30 rounded-xl blur-xl"></div>
+                        <div class="service-card rounded-xl p-8 relative z-10">
+                            <h3 class="text-3xl font-bold text-white mb-6">Nuestra <span class="text-[#00F0FF]">Misión</span></h3>
+                            <p class="text-white opacity-80 mb-6 text-lg">Transformar el marketing digital en una herramienta de crecimiento real para negocios que buscan resultados, no excusas. Creamos estrategias que generan ventas, no solo métricas vacías.</p>
+                            <h3 class="text-3xl font-bold text-white mb-6">Nuestra <span class="text-[#8A2BE2]">Visión</span></h3>
+                            <p class="text-white opacity-80 text-lg">Ser reconocidos como la agencia que revolucionó el marketing digital en Latinoamérica, estableciendo un nuevo estándar donde los resultados y la transparencia son innegociables.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h3 class="text-3xl font-bold text-white mb-8">Nuestros <span class="text-[#FF8E6E]">Valores</span></h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="service-card rounded-xl p-6 hover-shadow">
+                                <div class="w-12 h-12 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-bolt text-[#00F0FF] text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">Resultados</h4>
+                                <p class="text-white opacity-80">No nos conformamos con métricas vacías, buscamos impacto real en tu negocio.</p>
+                            </div>
+                            <div class="service-card rounded-xl p-6 hover-shadow">
+                                <div class="w-12 h-12 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-lightbulb text-[#8A2BE2] text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">Innovación</h4>
+                                <p class="text-white opacity-80">Constantemente exploramos nuevas estrategias para mantenerte a la vanguardia.</p>
+                            </div>
+                            <div class="service-card rounded-xl p-6 hover-shadow">
+                                <div class="w-12 h-12 bg-[#FF8E6E] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-chart-pie text-[#FF8E6E] text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">Transparencia</h4>
+                                <p class="text-white opacity-80">Comunicación clara y honesta sobre cada aspecto de tu estrategia digital.</p>
+                            </div>
+                            <div class="service-card rounded-xl p-6 hover-shadow">
+                                <div class="w-12 h-12 bg-[#FF1493] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-rocket text-[#FF1493] text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-2">Crecimiento</h4>
+                                <p class="text-white opacity-80">Nos obsesiona ver crecer a nuestros clientes de manera exponencial y sostenible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center md:text-left">Nuestro <span class="gradient-text">Equipo</span></h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- CEO -->
+                        <div class="team-member service-card rounded-xl p-8 text-center hover-shadow">
+                            <div class="w-40 h-40 mx-auto bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] rounded-full mb-6 flex items-center justify-center overflow-hidden relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] opacity-70"></div>
+                                <i class="fas fa-user text-5xl text-white relative z-10"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-2">Alex Rodríguez</h4>
+                            <p class="text-[#00F0FF] text-lg mb-4">CEO & Fundador</p>
+                            <p class="text-white opacity-80 mb-6">Visionario digital con más de 10 años revolucionando el marketing para marcas globales. Especialista en estrategias disruptivas que generan crecimiento exponencial.</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="social-icon w-10 h-10 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- COO -->
+                        <div class="team-member service-card rounded-xl p-8 text-center hover-shadow">
+                            <div class="w-40 h-40 mx-auto bg-gradient-to-br from-[#8A2BE2] to-[#FF1493] rounded-full mb-6 flex items-center justify-center overflow-hidden relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-[#8A2BE2] to-[#FF1493] opacity-70"></div>
+                                <i class="fas fa-user text-5xl text-white relative z-10"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-2">María Sánchez</h4>
+                            <p class="text-[#8A2BE2] text-lg mb-4">COO & Estratega Digital</p>
+                            <p class="text-white opacity-80 mb-6">Experta en optimización de procesos y escalado de campañas. Su enfoque analítico ha transformado la operativa de más de 50 empresas en Latinoamérica.</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="social-icon w-10 h-10 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon w-10 h-10 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-40 transition-all">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Lo que dicen <span class="gradient-text">Nuestros Clientes</span></h2>
+                <p class="text-xl text-white opacity-80 max-w-3xl mx-auto">Historias reales de empresas que transformaron su presencia digital con nosotros.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div class="testimonial-card rounded-xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">JD</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Juan Díaz</h4>
+                                <p class="text-[#00F0FF]">CEO, TechSolutions</p>
+                            </div>
+                        </div>
+                        <div class="text-yellow-300 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-white opacity-80 mb-4">"Weavy Agency transformó completamente nuestra estrategia digital. En solo 3 meses, triplicamos nuestras ventas y redujimos el costo de adquisición en un 40%. Su enfoque en resultados es refrescante."</p>
+                        <p class="text-[#00F0FF] font-bold">+300% en ventas</p>
+                    </div>
+                    
+                    <!-- Testimonio 2 -->
+                    <div class="testimonial-card rounded-xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#8A2BE2] to-[#FF1493] rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">LM</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Laura Martínez</h4>
+                                <p class="text-[#8A2BE2]">Fundadora, BeautyGlow</p>
+                            </div>
+                        </div>
+                        <div class="text-yellow-300 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-white opacity-80 mb-4">"Después de trabajar con tres agencias diferentes, finalmente encontramos a Weavy. Su estrategia de TikTok Ads nos permitió llegar a un público que ni siquiera sabíamos que existía. Los resultados hablan por sí solos."</p>
+                        <p class="text-[#8A2BE2] font-bold">+450% ROI en campañas</p>
+                    </div>
+                    
+                    <!-- Testimonio 3 -->
+                    <div class="testimonial-card rounded-xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#FF8E6E] to-[#FF1493] rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold text-xl">RG</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Roberto González</h4>
+                                <p class="text-[#FF8E6E]">Director, FitLife</p>
+                            </div>
+                        </div>
+                        <div class="text-yellow-300 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-white opacity-80 mb-4">"Lo que más valoro de Weavy es su transparencia. Siempre sé exactamente dónde va mi dinero y qué resultados está generando. Han convertido nuestro e-commerce en una máquina de ventas automatizada."</p>
+                        <p class="text-[#FF8E6E] font-bold">+200% en conversiones</p>
+                    </div>
+                </div>
+                
+                <!-- Controles de testimonios -->
+                <div class="flex justify-center mt-10 space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 focus:bg-[#00F0FF] hover-scale"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 focus:bg-[#00F0FF] hover-scale"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 focus:bg-[#00F0FF] hover-scale"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto - Sección mejorada y destacada (sin "Síguenos" y "Agendar llamada") -->
+    <section id="contacto" class="py-20 relative overflow-hidden bg-[#0D1424]">
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="blob" style="width: 500px; height: 500px; top: 10%; right: 5%; background: radial-gradient(circle at center, rgba(0, 240, 255, 0.3), transparent 70%);"></div>
+            <div class="blob" style="width: 600px; height: 600px; bottom: 10%; left: 5%; background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2), transparent 70%);"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Hablemos de tu <span class="gradient-text">Proyecto</span></h2>
+                <p class="text-xl text-white opacity-80 max-w-3xl mx-auto">Estamos listos para impulsar tu negocio al siguiente nivel. Contáctanos y comencemos a crear tu tsunami digital.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <!-- Formulario de contacto -->
+                <div class="md:w-1/2">
+                    <div class="service-card rounded-xl p-8 relative hover-shadow">
+                        <h3 class="text-2xl font-bold text-white mb-6">Envíanos un mensaje</h3>
+                        <form id="contactForm">
+                            <div class="mb-6">
+                                <label for="name" class="block text-white mb-2">Nombre</label>
+                                <input type="text" id="name" class="input-field w-full px-4 py-3 rounded-lg text-white hover-shadow" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-white mb-2">Email</label>
+                                <input type="email" id="email" class="input-field w-full px-4 py-3 rounded-lg text-white hover-shadow" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="company" class="block text-white mb-2">Empresa</label>
+                                <input type="text" id="company" class="input-field w-full px-4 py-3 rounded-lg text-white hover-shadow" placeholder="Nombre de tu empresa">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-white mb-2">Mensaje</label>
+                                <textarea id="message" rows="5" class="input-field w-full px-4 py-3 rounded-lg text-white resize-none hover-shadow" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button w-full text-white font-bold py-4 px-6 rounded-lg hover:bg-opacity-90 transition-all">
+                                Enviar mensaje
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                        <div id="formSuccess" class="hidden mt-4 p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-lg">
+                            <p class="text-green-400 font-bold">¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Información de contacto -->
+                <div class="md:w-1/2">
+                    <div class="service-card rounded-xl p-8 relative hover-shadow">
+                        <h3 class="text-2xl font-bold text-white mb-6">Información de contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start hover-scale">
+                                <div class="w-12 h-12 bg-[#00F0FF] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-[#00F0FF]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">Ubicación</h4>
+                                    <p class="text-white opacity-80">Av. Insurgentes Sur 1602, Ciudad de México</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start hover-scale">
+                                <div class="w-12 h-12 bg-[#8A2BE2] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-[#8A2BE2]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">Email</h4>
+                                    <a href="mailto:contacto@weavyagency.com" class="text-white opacity-80 hover:text-[#8A2BE2] transition-all">contacto@weavyagency.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start hover-scale">
+                                <div class="w-12 h-12 bg-[#FF8E6E] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt text-[#FF8E6E]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">Teléfono</h4>
+                                    <a href="tel:+525512345678" class="text-white opacity-80 hover:text-[#FF8E6E] transition-all">+52 55 1234 5678</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start hover-scale">
+                                <div class="w-12 h-12 bg-[#FF1493] bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-[#FF1493]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">Horario</h4>
+                                    <p class="text-white opacity-80">Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Imagen decorativa -->
+                        <div class="mt-8 relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-[#00F0FF] to-[#8A2BE2] opacity-20 rounded-xl blur-md"></div>
+                            <div class="relative p-6 rounded-xl border border-[#00F0FF] border-opacity-30 text-center">
+                                <h4 class="text-xl font-bold text-white mb-2">¡Impulsa tu negocio ahora!</h4>
+                                <p class="text-white opacity-80">Estamos listos para convertir tu marca en un tsunami digital que arrase con la competencia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-[#00D1D1] border-opacity-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-white font-black text-2xl">
+                        <span class="text-[#00F0FF]">W</span>eavy <span class="text-[#8A2BE2]">A</span>gency
+                    </div>
+                    <p class="text-white opacity-60 mt-2">Tu tsunami digital</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#inicio" class="text-white hover:text-[#00F0FF] transition-all">Inicio</a>
+                    <a href="#servicios" class="text-white hover:text-[#00F0FF] transition-all">Servicios</a>
+                    <a href="#nosotros" class="text-white hover:text-[#00F0FF] transition-all">Nosotros</a>
+                    <a href="#testimonios" class="text-white hover:text-[#00F0FF] transition-all">Testimonios</a>
+                    <a href="#contacto" class="text-white hover:text-[#00F0FF] transition-all">Contacto</a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-white opacity-60 text-sm">
+                <p>&copy; 2023 Weavy Agency. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Service tabs functionality
+        document.querySelectorAll('.service-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.service-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-tab');
+                
+                // Show/hide services based on category
+                document.querySelectorAll('.service-card[data-category]').forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulación de envío exitoso
+            document.getElementById('formSuccess').classList.remove('hidden');
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                document.getElementById('formSuccess').classList.add('hidden');
+            }, 5000);
+        });
+        
+        // Smooth scroll para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Cerrar menú móvil si está abierto
+                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9488b16a754e1f84',t:'MTc0ODcxNzgwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
